@@ -1,29 +1,28 @@
-import {productos} from "../helpers/baseDatos.js"
+import { pintarProducos } from ".././helpers/pintarProductos.js"
 
 //llamando a la fila
 let fila = document.getElementById("fila")
 
 //recorrer arreglo
-productos.forEach(function(producto){
+pintarProducos()
+
+
+fila.addEventListener("click", function(evento){
+
+    let tarjeta = evento.target.parentElement
     
+    let datosProductoSeleccionado = {}
 
-    //creando columnas para alojar los productos
-    let columna = document.createElement("div")
-    columna.classList.add("col")
+     datosProductoSeleccionado.foto = tarjeta.querySelector("img").src
+     datosProductoSeleccionado.nombre = tarjeta.querySelector("h2").textContent
+     datosProductoSeleccionado.precio =tarjeta.querySelector("h3").textContent
+     datosProductoSeleccionado.descripcion = tarjeta.querySelector("p").textContent
 
-    //crear tarjeta para almacenar la info del producto
-    let tarjeta = document.createElement("div")
-    //card es una clase de boostrap, calse de bootstrap (heigth)h-100
-    tarjeta.classList.add("card", "h-100")
+     //datosprductoseleccionado deben volverse un string para guardarse el la memorio cache(que es la memoria del servidor)
+     localStorage.setItem("productos", JSON.stringify(datosProductoSeleccionado))
 
-    //crear imagen
-    let imagen = document.createElement("img")
-    //imgfluid es una clase de boostrap que hace la imagen responsive
-    imagen.classList.add("img-fluid", "w-100")
-    imagen.src = producto.fotos[0]
+     window.location.href = "../../src/view/plantilla.html"
 
-    //padres e hijos
-    tarjeta.appendChild(imagen)
-    columna.appendChild(tarjeta)
-    fila.appendChild(columna)
-})
+            
+        
+        })
