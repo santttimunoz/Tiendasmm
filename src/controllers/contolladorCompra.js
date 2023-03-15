@@ -15,3 +15,32 @@ price.textContent = infoProducto.precio
 
 let descripcion = document.getElementById("descripcion")
 descripcion.textContent = infoProducto.descripcion
+
+let infoCarrito = JSON.parse(localStorage.getItem("carrito"))
+
+let carrito
+
+let numberCar = document.getElementById("numberCar")
+
+if(infoCarrito != null){
+
+    carrito = infoCarrito
+    console.log(carrito)
+    numberCar.textContent = carrito.length
+
+}else{
+
+    let carrito = []
+}
+
+
+let btnAgregarProducto = document.getElementById("btnagregaralcarrito")
+
+
+btnAgregarProducto.addEventListener("click", function(){
+    
+   carrito.push(infoProducto)
+   numberCar.textContent = carrito.length
+    
+   localStorage.setItem("carrito", JSON.stringify(carrito))
+})
