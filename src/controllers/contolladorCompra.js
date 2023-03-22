@@ -19,28 +19,64 @@ descripcion.textContent = infoProducto.descripcion
 let infoCarrito = JSON.parse(localStorage.getItem("carrito"))
 
 let carrito
-
 let numberCar = document.getElementById("numberCar")
 
 if(infoCarrito != null){
-
-    carrito = infoCarrito
-    console.log(carrito)
-    numberCar.textContent = carrito.length
-
+   carrito=infoCarrito
+   numberCar.textContent = carrito.length
 }else{
-
-    let carrito = []
+   carrito = []
 }
-
 
 let btnAgregarProducto = document.getElementById("btnagregaralcarrito")
 
-
 btnAgregarProducto.addEventListener("click", function(){
-    
+     
    carrito.push(infoProducto)
    numberCar.textContent = carrito.length
-    
+
    localStorage.setItem("carrito", JSON.stringify(carrito))
+})
+
+let btnClear = document.getElementById("btnClear")
+let btnDollar = document.getElementById("btnStotal")
+let calcular = document.getElementById("calcular")
+let cant = document.getElementById("cant")
+
+btnClear.addEventListener("click", function(){
+    
+    cant.value = null
+    calcular.textContent = null
+    carrito = []
+    numberCar.textContent = 0
+    localStorage.removeItem("carrito")
+
+})
+
+let prices 
+let suma = 0
+ prices = carrito.map(obj => obj.precio)
+
+   for(let i = 0; i < prices.length; i++){
+
+       suma = parseInt(prices[i]) * prices.length
+        
+   }
+
+let total
+btnDollar.addEventListener("click", function(){
+
+   
+    total = cant.value * infoProducto.precio
+    calcular.textContent = total 
+
+})
+let decimal
+btnConvert.addEventListener("click", function(){
+
+   
+   total = cant.value * infoProducto.precio / 4813.4
+   decimal = total.toFixed(2)
+   calcular.textContent = decimal 
+
 })

@@ -14,7 +14,7 @@ export function pintarProducos(){
         //crear tarjeta para almacenar la info del producto
         let tarjeta = document.createElement("div")
         //card es una clase de boostrap, calse de bootstrap (heigth)h-100
-        tarjeta.classList.add("card", "h-100")
+        tarjeta.classList.add("card", "h-100", "shadow")
     
         //crear imagen
         let imagen = document.createElement("img")
