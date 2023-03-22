@@ -74,9 +74,19 @@ btnDollar.addEventListener("click", function(){
 let decimal
 btnConvert.addEventListener("click", function(){
 
-   
    total = cant.value * infoProducto.precio / 4813.4
    decimal = total.toFixed(2)
    calcular.textContent = decimal 
 
 })
+
+
+
+//rutina llamando al carrito
+let datoscarro=JSON.parse(localStorage.getItem("carrito"))
+let sumatoria=0
+datoscarro.forEach(function(producto){
+   sumatoria=sumatoria+Number(producto.precio)
+   
+})
+console.log(sumatoria)

@@ -21,7 +21,7 @@ fila.addEventListener("click", function(evento){
      //datosprductoseleccionado deben volverse un string para guardarse el la memorio cache(que es la memoria del servidor)
      localStorage.setItem("productos", JSON.stringify(datosProductoSeleccionado))
 
-     window.location.href = "../../../Tiendasmm/src/view/plantilla.html"
+     window.location.href = "../../src/view/plantilla.html"
 
             
         
